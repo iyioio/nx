@@ -40,7 +40,7 @@ function normalizeOptions(tree: Tree, options: CdkGeneratorGeneratorSchema): Nor
     }
   }
 
-  const uname=name
+  const uname=options.stackName
     .split('-')
     .map(p=>p.substring(0,1).toUpperCase()+p.substring(1))
     .join('')

@@ -12,6 +12,7 @@
                 "tsConfig": "packages/cdk/tsconfig.lib.json",
                 "assets": [
                     "packages/cdk/*.md",
+                    "packages/cdk/src/**/files/**",
                     {
                         "input": "./packages/cdk/src",
                         "glob": "**/!(*.ts)",
