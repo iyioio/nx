@@ -15,7 +15,10 @@ interface NormalizedSchema extends CdkGeneratorGeneratorSchema {
   projectName: string;
   projectRoot: string;
   projectDirectory: string;
-  parsedTags: string[]
+  parsedTags: string[];
+  jsonTags: string;
+  toRoot: string;
+
 }
 
 function normalizeOptions(tree: Tree, options: CdkGeneratorGeneratorSchema): NormalizedSchema {
@@ -28,11 +31,25 @@ function normalizeOptions(tree: Tree, options: CdkGeneratorGeneratorSchema): Nor
   const parsedTags = options.tags
     ? options.tags.split(',').map((s) => s.trim())
     : [];
+  const jsonTags=JSON.stringify(parsedTags);
 
-  const uname=name.substring(0,1).toLowerCase()+name.substring(1);
+  let toRoot='..';
+  for(const c of projectRoot){
+    if(c==='/' || c==='\\'){
+        toRoot+='/..';
+    }
+  }
+
+  const uname=name
+    .split('-')
+    .map(p=>p.substring(0,1).toUpperCase()+p.substring(1))
+    .join('')
+
   return {
     ...options,
     uname,
+    jsonTags,
+    toRoot,
     projectName,
     projectRoot,
     projectDirectory,

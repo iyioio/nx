@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
   displayName: 'cdk',
-  preset: '../../jest.preset.js',
+  preset: '<%- toRoot %>/jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -12,5 +12,5 @@ export default {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/packages/cdk',
+  coverageDirectory: '<%- toRoot %>/coverage/packages/cdk',
 };

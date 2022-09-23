@@ -1,6 +1,6 @@
 {
-    "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "<%= projectRoot %>/src",
+    "$schema": "<%- toRoot %>/node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "<%- projectRoot %>/src",
     "projectType": "application",
     "targets": {
         "deploy": {
@@ -12,7 +12,7 @@
             ],
             "executor": "nx:run-commands",
             "options": {
-                "cwd": "<%= projectRoot %>",
+                "cwd": "<%- projectRoot %>",
                 "command": "cdk deploy"
             }
         },
@@ -25,7 +25,7 @@
             ],
             "executor": "nx:run-commands",
             "options": {
-                "cwd": "<%= projectRoot %>",
+                "cwd": "<%- projectRoot %>",
                 "command": "cdk bootstrap"
             }
         },
@@ -38,11 +38,11 @@
             ],
             "executor": "nx:run-commands",
             "options": {
-                "cwd": "<%= projectRoot %>",
+                "cwd": "<%- projectRoot %>",
                 "command": "cdk destroy"
             }
         }
     },
-    "tags": [],
+    "tags": <%- jsonTags %>,
     "implicitDependencies": []
 }
