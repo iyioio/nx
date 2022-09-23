@@ -1,0 +1,12 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "name": "cdk",
+    "version": "0.0.1",
+    "generators": {
+        "basic": {
+            "factory": "./src/generators/basic/generator",
+            "schema": "./src/generators/basic/schema.json",
+            "description": "Generate a basic CDK project"
+        }
+    }
+}

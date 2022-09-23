@@ -1,34 +1,34 @@
 {
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "packages/cdk-plugin/src",
+    "sourceRoot": "packages/cdk/src",
     "projectType": "library",
     "targets": {
         "build": {
             "executor": "@nrwl/js:tsc",
             "outputs": ["{options.outputPath}"],
             "options": {
-                "outputPath": "dist/packages/cdk-plugin",
-                "main": "packages/cdk-plugin/src/index.ts",
-                "tsConfig": "packages/cdk-plugin/tsconfig.lib.json",
+                "outputPath": "dist/packages/cdk",
+                "main": "packages/cdk/src/index.ts",
+                "tsConfig": "packages/cdk/tsconfig.lib.json",
                 "assets": [
-                    "packages/cdk-plugin/*.md",
+                    "packages/cdk/*.md",
                     {
-                        "input": "./packages/cdk-plugin/src",
+                        "input": "./packages/cdk/src",
                         "glob": "**/!(*.ts)",
                         "output": "./src"
                     },
                     {
-                        "input": "./packages/cdk-plugin/src",
+                        "input": "./packages/cdk/src",
                         "glob": "**/*.d.ts",
                         "output": "./src"
                     },
                     {
-                        "input": "./packages/cdk-plugin",
+                        "input": "./packages/cdk",
                         "glob": "generators.json",
                         "output": "."
                     },
                     {
-                        "input": "./packages/cdk-plugin",
+                        "input": "./packages/cdk",
                         "glob": "executors.json",
                         "output": "."
                     }
@@ -40,18 +40,18 @@
             "outputs": ["{options.outputFile}"],
             "options": {
                 "lintFilePatterns": [
-                    "packages/cdk-plugin/**/*.ts",
-                    "packages/cdk-plugin/generators.json",
-                    "packages/cdk-plugin/executors.json",
-                    "packages/cdk-plugin/package.json"
+                    "packages/cdk/**/*.ts",
+                    "packages/cdk/generators.json",
+                    "packages/cdk/executors.json",
+                    "packages/cdk/package.json"
                 ]
             }
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/packages/cdk-plugin"],
+            "outputs": ["coverage/packages/cdk"],
             "options": {
-                "jestConfig": "packages/cdk-plugin/jest.config.ts",
+                "jestConfig": "packages/cdk/jest.config.ts",
                 "passWithNoTests": true
             }
         }

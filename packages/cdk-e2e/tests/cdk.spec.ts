@@ -6,7 +6,7 @@ import {
     uniq,
 } from '@nrwl/nx-plugin/testing';
 
-describe('cdk-plugin e2e', () => {
+describe('cdk e2e', () => {
     // Setting up individual workspaces per
     // test can cause e2e runs to take a long time.
     // For this reason, we recommend each suite only
@@ -14,7 +14,7 @@ describe('cdk-plugin e2e', () => {
     // on a unique project in the workspace, such that they
     // are not dependant on one another.
     beforeAll(() => {
-        ensureNxProject('@iyio/nx-cdk', 'dist/packages/cdk-plugin');
+        ensureNxProject('@iyio/nx-cdk', 'dist/packages/cdk');
     });
 
     afterAll(() => {
@@ -23,18 +23,18 @@ describe('cdk-plugin e2e', () => {
         runNxCommandAsync('reset');
     });
 
-    it('should create cdk-plugin', async () => {
-        const project = uniq('cdk-plugin');
-        await runNxCommandAsync(`generate @iyio/nx-cdk:cdk-plugin ${project}`);
+    it('should create cdk', async () => {
+        const project = uniq('cdk');
+        await runNxCommandAsync(`generate @iyio/nx-cdk:cdk ${project}`);
         const result = await runNxCommandAsync(`build ${project}`);
         expect(result.stdout).toContain('Executor ran');
     }, 120000);
 
     describe('--directory', () => {
         it('should create src in the specified directory', async () => {
-            const project = uniq('cdk-plugin');
+            const project = uniq('cdk');
             await runNxCommandAsync(
-                `generate @iyio/nx-cdk:cdk-plugin ${project} --directory subdir`
+                `generate @iyio/nx-cdk:cdk ${project} --directory subdir`
             );
             expect(() =>
                 checkFilesExist(`libs/subdir/${project}/src/index.ts`)
@@ -44,10 +44,10 @@ describe('cdk-plugin e2e', () => {
 
     describe('--tags', () => {
         it('should add tags to the project', async () => {
-            const projectName = uniq('cdk-plugin');
-            ensureNxProject('@iyio/nx-cdk', 'dist/packages/cdk-plugin');
+            const projectName = uniq('cdk');
+            ensureNxProject('@iyio/nx-cdk', 'dist/packages/cdk');
             await runNxCommandAsync(
-                `generate @iyio/nx-cdk:cdk-plugin ${projectName} --tags e2etag,e2ePackage`
+                `generate @iyio/nx-cdk:cdk ${projectName} --tags e2etag,e2ePackage`
             );
             const project = readJson(`libs/${projectName}/project.json`);
             expect(project.tags).toEqual(['e2etag', 'e2ePackage']);

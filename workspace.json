@@ -2,7 +2,7 @@
     "$schema": "./node_modules/nx/schemas/workspace-schema.json",
     "version": 2,
     "projects": {
-        "cdk-plugin": "packages/cdk-plugin",
-        "cdk-plugin-e2e": "packages/cdk-plugin-e2e"
+        "cdk": "packages/cdk",
+        "cdk-e2e": "packages/cdk-e2e"
     }
 }

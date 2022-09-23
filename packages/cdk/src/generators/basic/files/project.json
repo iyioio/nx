@@ -16,6 +16,19 @@
                 "command": "cdk deploy"
             }
         },
+        "synth": {
+            "dependsOn": [
+                {
+                    "target": "build",
+                    "projects": "dependencies"
+                }
+            ],
+            "executor": "nx:run-commands",
+            "options": {
+                "cwd": "<%- projectRoot %>",
+                "command": "cdk synth"
+            }
+        },
         "bootstrap": {
             "dependsOn": [
                 {

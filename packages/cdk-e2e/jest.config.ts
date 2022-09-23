@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-    displayName: 'cdk-plugin-e2e',
+    displayName: 'cdk-e2e',
     preset: '../../jest.preset.js',
     globals: {
         'ts-jest': {
@@ -11,5 +11,5 @@ export default {
         '^.+\\.[tj]s$': 'ts-jest',
     },
     moduleFileExtensions: ['ts', 'js', 'html'],
-    coverageDirectory: '../../coverage/packages/cdk-plugin-e2e',
+    coverageDirectory: '../../coverage/packages/cdk-e2e',
 };

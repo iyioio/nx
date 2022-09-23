@@ -15,7 +15,7 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@iyio/nx-cdk": ["packages/cdk-plugin/src/index.ts"]
+            "@iyio/nx-cdk": ["packages/cdk/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]
