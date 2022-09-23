@@ -1,0 +1,48 @@
+{
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "<%= projectRoot %>/src",
+    "projectType": "application",
+    "targets": {
+        "deploy": {
+            "dependsOn": [
+                {
+                    "target": "build",
+                    "projects": "dependencies"
+                }
+            ],
+            "executor": "nx:run-commands",
+            "options": {
+                "cwd": "<%= projectRoot %>",
+                "command": "cdk deploy"
+            }
+        },
+        "bootstrap": {
+            "dependsOn": [
+                {
+                    "target": "build",
+                    "projects": "dependencies"
+                }
+            ],
+            "executor": "nx:run-commands",
+            "options": {
+                "cwd": "<%= projectRoot %>",
+                "command": "cdk bootstrap"
+            }
+        },
+        "destroy": {
+            "dependsOn": [
+                {
+                    "target": "build",
+                    "projects": "dependencies"
+                }
+            ],
+            "executor": "nx:run-commands",
+            "options": {
+                "cwd": "<%= projectRoot %>",
+                "command": "cdk destroy"
+            }
+        }
+    },
+    "tags": [],
+    "implicitDependencies": []
+}

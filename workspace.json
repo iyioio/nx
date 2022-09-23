@@ -1,5 +1,8 @@
 {
-  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
-  "version": 2,
-  "projects": {}
+    "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+    "version": 2,
+    "projects": {
+        "cdk-plugin": "packages/cdk-plugin",
+        "cdk-plugin-e2e": "packages/cdk-plugin-e2e"
+    }
 }
