@@ -3,6 +3,13 @@
     "sourceRoot": "<%- projectRoot %>/src",
     "projectType": "application",
     "targets": {
+        "build": {
+            "executor": "nx:run-commands",
+            "options": {
+                "cwd": "<%- projectRoot %>",
+                "command": "echo 'no build needed, just ts-node'"
+            }
+        },
         "deploy": {
             "dependsOn": [
                 {
@@ -13,7 +20,7 @@
             "executor": "nx:run-commands",
             "options": {
                 "cwd": "<%- projectRoot %>",
-                "command": "cdk deploy"
+                "command": "npx cdk deploy"
             }
         },
         "synth": {
@@ -26,7 +33,20 @@
             "executor": "nx:run-commands",
             "options": {
                 "cwd": "<%- projectRoot %>",
-                "command": "cdk synth"
+                "command": "npx cdk synth"
+            }
+        },
+        "diff": {
+            "dependsOn": [
+                {
+                    "target": "build",
+                    "projects": "dependencies"
+                }
+            ],
+            "executor": "nx:run-commands",
+            "options": {
+                "cwd": "<%- projectRoot %>",
+                "command": "npx cdk diff"
             }
         },
         "bootstrap": {
@@ -39,7 +59,7 @@
             "executor": "nx:run-commands",
             "options": {
                 "cwd": "<%- projectRoot %>",
-                "command": "cdk bootstrap"
+                "command": "npx cdk bootstrap"
             }
         },
         "destroy": {
@@ -52,7 +72,7 @@
             "executor": "nx:run-commands",
             "options": {
                 "cwd": "<%- projectRoot %>",
-                "command": "cdk destroy"
+                "command": "npx cdk destroy"
             }
         }
     },
